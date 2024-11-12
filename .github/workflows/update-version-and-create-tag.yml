@@ -62,17 +62,17 @@ jobs:
 
       - name: Update version.nix file
         run: |
-          echo "\"${{ env.new_version }}\"" > pkgs/fabric/version.nix
+          echo "\"${{ env.new_version }}\"" > nix/pkgs/fabric/version.nix
 
       - name: Update gomod2nix.toml file
         run: |
-          nix run .#gomod2nix
+          nix run .#gomod2nix -- generate --outdir nix/pkgs/fabric
 
       - name: Commit changes
         run: |
           git add version.go
-          git add pkgs/fabric/version.nix
-          git add gomod2nix.toml
+          git add nix/pkgs/fabric/version.nix
+          git add nix/pkgs/fabric/gomod2nix.toml
           if ! git diff --staged --quiet; then
             git commit -m "Update version to ${{ env.new_tag }} and commit $commit_hash"
           else

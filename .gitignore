@@ -1,3 +1,6 @@
+fabric
+!fabric/
+
 # Nix
 .direnv
 result

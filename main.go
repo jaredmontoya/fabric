@@ -2,10 +2,11 @@ package main
 
 import (
 	"fmt"
-	"github.com/jessevdk/go-flags"
 	"os"
 
-	"github.com/danielmiessler/fabric/cli"
+	"github.com/jessevdk/go-flags"
+
+	"github.com/danielmiessler/fabric/pkg/cli"
 )
 
 func main() {
