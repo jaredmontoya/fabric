@@ -1,5 +1,5 @@
 # Use official golang image as builder
-FROM golang:1.22.5-alpine AS builder
+FROM golang:1.22.8-alpine AS builder
 
 # Set working directory
 WORKDIR /app
@@ -27,8 +27,8 @@ COPY patterns /patterns
 
 # Ensure clean config directory and copy ENV file
 RUN rm -rf /root/.config/fabric && \
-    mkdir -p /root/.config/fabric
-COPY ENV /root/.config/fabric/.env
+  mkdir -p /root/.config/fabric
+COPY .ENV /root/.config/fabric/.env
 
 # Add debug commands
 RUN ls -la /root/.config/fabric/
